@@ -104,7 +104,7 @@ public class LCRSTree<E> implements Tree<E> {
     public Position<E> parent(Position<E> p) throws IndexOutOfBoundsException,
             IllegalStateException {
         TreeNode<E> node = checkPosition(p);
-        Position<E> parentPos = (Position<E>) node.getParent();
+        Position<E> parentPos = node.getParent();
         if (parentPos == null) {
             throw new IndexOutOfBoundsException("The node has not parent");
         }

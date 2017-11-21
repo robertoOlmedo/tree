@@ -15,12 +15,12 @@ public interface TreeIteratorFactory<E> {
      * @param tree the tree to be iterated
      * @return the iterator of the tree
      */
-    public Iterator<Position<E>> createIterator(Tree<E> tree);
+    Iterator<Position<E>> createIterator(Tree<E> tree);
     /**
      * Creates an iterator from the root of the tree
      * @param tree the tree to be iterated
      * @param pos the initial position of the iterator
      * @return the iterator of the tree
      */
-    public Iterator<Position<E>> createIterator(Tree<E> tree, Position<E> pos);
+    Iterator<Position<E>> createIterator(Tree<E> tree, Position<E> pos);
 }
