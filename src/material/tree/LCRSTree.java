@@ -2,10 +2,7 @@ package material.tree;
 import material.tree.iterator.BFSIteratorFactory;
 import material.tree.iterator.TreeIteratorFactory;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * A linked class for a tree where nodes have an arbitrary number of children.
@@ -61,12 +58,13 @@ public class LCRSTree<E> implements Tree<E> {
     @Override
     public Iterable<? extends Position<E>> children(Position<E> p) {
         TreeNode<E> node = checkPosition(p);
-        List children = new ArrayList();
+        List<TreeNode<E>> children = new ArrayList<>();
         if(!this.isLeaf(node)) {
             children.add(node.getFirstChildren());
+            node=node.getFirstChildren();
             while(node.getBrother() != null) {
-                children.add(node.getBrother());
                 node = node.getBrother();
+                children.add(node);
             }
         }
         return children;
@@ -87,11 +85,11 @@ public class LCRSTree<E> implements Tree<E> {
         return root;
     }
     public void swapElements(Position<E> p1, Position<E> p2) throws IllegalStateException {
-        TreeNode<E> node1 = checkPosition(p1);
-        TreeNode<E> node2 = checkPosition(p2);
+        TreeNode<E> nodo1 = checkPosition(p1);
+        TreeNode<E> nodo2 = checkPosition(p2);
         E temp = p2.getElement();
-        node2.setElement(p1.getElement());
-        node1.setElement(temp);
+        nodo2.setElement(p1.getElement());
+        nodo1.setElement(temp);
         
     }
     private TreeNode<E> checkPosition(Position<E> p) throws IllegalStateException {
